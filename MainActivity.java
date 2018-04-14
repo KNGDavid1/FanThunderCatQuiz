@@ -1,177 +1,152 @@
 package com.example.android.fanthundercatquiz;
 
+
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import android.view.View;
+
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
+
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    int totalScore = 0;
+
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
     }
 
-    public void onRadioButton1Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
+    String userName;
 
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer1A:
-                if (button1Checked)
-                    break;
-            case R.id.answer1B:
-                if (button1Checked)
-                    break;
-            case R.id.answer1C:
-                if (button1Checked)
-                    break;
-            case R.id.answer1D:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                break;
+
+    // Method pulled from Submit Button
+
+    public void onSubmit(View view) {
+        int totalScore = 0;
+
+        //Declaring user's answer variable
+        String userAnswer;
+        //Initiating the EditText box from .xml
+
+        EditText grabbedText = findViewById(R.id.name_field);
+        //Placing the captured text into the userName string
+        userName = grabbedText.getText().toString();
+
+        //Declaring the selected radio buttons numerical identity
+        int question2Answer;
+
+        //Declaring current radiobutton test
+        RadioButton whichButton;
+
+        // Setting up all radiogroups 1 through 7
+        RadioGroup mRadioGroupQ1 = findViewById(R.id.q1);
+        RadioGroup mRadioGroupQ2 = findViewById(R.id.q2);
+        RadioGroup mRadioGroupQ3 = findViewById(R.id.q3);
+        RadioGroup mRadioGroupQ4 = findViewById(R.id.q4);
+        RadioGroup mRadioGroupQ5 = findViewById(R.id.q5);
+        RadioGroup mRadioGroupQ6 = findViewById(R.id.q6);
+        RadioGroup mRadioGroupQ7 = findViewById(R.id.q7);
+
+
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ1.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("Bengali")) {
+            totalScore++;
         }
+
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ2.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("They fear him")) {
+            totalScore++;
+        }
+
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ3.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("Nunchucks")) {
+            totalScore++;
+        }
+
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ4.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("Fire")) {
+            totalScore++;
+        }
+
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ5.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("Lord")) {
+            totalScore++;
+        }
+
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ6.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("Bo staff")) {
+            totalScore++;
+        }
+        // Test if player's choice is correct and update the correctAnswer variable
+        // get selected radio button from radioGroup
+        question2Answer = mRadioGroupQ7.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        whichButton = findViewById(question2Answer);
+        // Convert to string the value of the selected button selection
+        userAnswer = whichButton.getText().toString();
+        if (userAnswer.equals("invisibility")) {
+            totalScore++;
+        }
+
+        // place code here for the checkboxes
+        CheckBox cb1 = findViewById(R.id.True_checkbox);
+        // Test for true answer
+        if (cb1.isChecked()) {
+            totalScore++;
+        }
+
+        // Possible Toast output for when the quiz has been tallied
+        Toast.makeText(this, "Looks like " + userName + " has correctly answered " + totalScore + " questions out of a total of 8 questions.", Toast.LENGTH_LONG).show();
     }
-    public void onRadioButton2Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
-
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer2A:
-                if (button1Checked)
-                    break;
-            case R.id.answer2B:
-                if (button1Checked)
-                    break;
-            case R.id.answer2C:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                    break;
-            case R.id.answer2D:
-                if (button1Checked)
-                    break;
-        }
-    }
-    public void onRadioButton3Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
-
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer3A:
-                if (button1Checked)
-                    break;
-            case R.id.answer3B:
-                if (button1Checked)
-                    break;
-            case R.id.answer3C:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                break;
-            case R.id.answer3D:
-                if (button1Checked)
-                    break;
-        }
-    }
-    public void onRadioButton4Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
-
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer4A:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                    break;
-            case R.id.answer4B:
-                if (button1Checked)
-                    break;
-            case R.id.answer4C:
-                if (button1Checked)
-                    break;
-            case R.id.answer4D:
-                if (button1Checked)
-                    break;
-        }
-    }
-    public void onRadioButton5Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
-
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer5A:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                break;
-            case R.id.answer5B:
-                if (button1Checked)
-                    break;
-            case R.id.answer5C:
-                if (button1Checked)
-                    break;
-            case R.id.answer5D:
-                if (button1Checked)
-                    break;
-        }
-    }
-    public void onRadioButton6Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
-
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer6A:
-                if (button1Checked)
-                    break;
-            case R.id.answer6B:
-                if (button1Checked)
-                    break;
-            case R.id.answer6C:
-                if (button1Checked)
-                    break;
-            case R.id.answer6D:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                    break;
-        }
-    }
-    public void onRadioButton7Clicked(View view) {
-        // Is the button now checked?
-        boolean button1Checked = ((RadioButton) view).isChecked();
-
-        //Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.answer7A:
-                if (button1Checked)
-                    break;
-            case R.id.answer7B:
-                if (button1Checked)
-                    break;
-            case R.id.answer7C:
-                if (button1Checked)
-                    totalScore = totalScore + 1;
-                    break;
-        }
-
 }
-    private void Thank_You(View view) {
-        if (totalScore == 0) {
-            // Displays toast which shows the failure score message
-            Toast.makeText(this, "Sorry, you got " + totalScore + " questions right. Try again.", Toast.LENGTH_SHORT).show();
-        } else if (totalScore == 1){
-            // Displays toast which shows the 1 question right score message
-            Toast.makeText(this, "You got " + totalScore + " question right!", Toast.LENGTH_SHORT).show();
-        } else if (totalScore >= 2) {
-            // Displays toast which shows the success score message
-            Toast.makeText(this, "Congratulations! You got " + totalScore + " questions right!", Toast.LENGTH_SHORT).show();
-        }
 
-    }
-    }
+
